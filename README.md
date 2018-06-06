@@ -1,13 +1,17 @@
 # 📦✨  wasm-pack
-> pack up the wasm and publish it to npm!
+> your favorite rust -> wasm workflow tool!
 
 [![Build Status](https://travis-ci.org/ashleygwilliams/wasm-pack.svg?branch=master)](https://travis-ci.org/ashleygwilliams/wasm-pack)
 [![Build status](https://ci.appveyor.com/api/projects/status/7jjuo5wewu9lyyfi?svg=true)](https://ci.appveyor.com/project/ashleygwilliams/wasm-pack)
 
-the goal of this project is to create a portable command line tool
-for publishing compiled wasm projects to the npm registry for the consumption
-of js devs using the npm CLI, yarn, or any other CLI tool that interfaces
-with the npm registry.
+this tool seeks to be a one-stop shop for building and working with rust-
+generated webassembly that you would like to interop with JavaScript, in the
+browser or with Node.js. `wasm-pack` helps you build and publish rust-generated
+web assembly to the npm registry to be used alongside any other javascript
+package in workflows that you already use, such as [webpack] or [greenkeeper].
+
+[webpack]: https://webpack.js.org/
+[greenkeeper]: https://greenkeeper.io/ 
 
 this project is a part of the [rust-wasm] group. you can find more info by
 visiting that repo!
@@ -18,39 +22,16 @@ visiting that repo!
 
 ## 🔮 prerequisities
 
-this project is written in rust. [get rust] to work on this project.
+- [development environment](docs/prerequisites.md)
+- [installation and getting started](docs/setup.md)
 
-[get rust]: https://www.rustup.rs/
+## 🎙️ commands
 
-if you want to publish packages, you'll also need an account on [npm] and have
-[node/npm] installed.
+- [`init`](docs/init.md): generate an npm wasm pkg from a rustwasm crate
+- [`pack`](docs/pack.md): create a tarball of your rustwasm pkg
+- [`publish`](docs/publish.md): publish your rustwasm pkg to a registry
 
-[npm]: https://www.npmjs.com
-[node/npm]: https://nodejs.org/
-
-## 🏃‍♀️ up and running
-
-1. fork and clone this repository
-2. install [node/npm]
-2. `cd wasm-pack`
-3. `cargo run`
-
-## 💃 commands
-- `help`: display available commands
-- 🐣  `init`: create necessary files for js interop and npm publishing
-  - optionally pass a path to a dir that contains a `Cargo.toml`, e.g.:
-    ```
-    wasm-pack init examples/js-hello-world
-    ```
-  - optionally pass a scope name to generate a `package.json` for a scoped pkg, e.g.:
-    ```
-    wasm-pack init examples/scopes-hello-world --scope test
-    ```
-    generates a `package.json` for an npm package called `@test/scopes-hello-world`
-- 🍱  `pack`: create a tarball but don't push to the npm registry (see https://docs.npmjs.com/cli/pack)
-- 🎆  `publish`: create a tarball and publish to the npm registry (see https://docs.npmjs.com/cli/publish)
-
-### logging
+### 📝 logging
 
 We generate a `wasm-pack.log` file if `wasm-pack` errors on you, and you can
 customize the log verbosity using the verbosity flag.
@@ -61,8 +42,15 @@ customize the log verbosity using the verbosity flag.
 | -vv           | All Debug, Info, Warn, and Errors are logged        |
 | -vvv          | All Trace, Debug, Info, Warn, and Errors are logged |
 
+## 👯 contributing
 
-## ⚙️  how to use
+Read our [guide] on getting up and running for developing `wasm-pack`, and
+check out our [contribution policy].
+
+[guide]: doc/contributing.md
+[contirbution policy]: contributing.md
+
+## ⚡ quickstart guide
 
 1. write a crate in Rust.
 2. add `wasm-bindgen` to your `Cargo.toml`:
