@@ -44,6 +44,7 @@ pub mod stamps;
 pub mod target;
 pub mod test;
 pub mod wasm_opt;
+pub mod wasm_toolkit;
 
 use progressbar::ProgressOutput;
 
